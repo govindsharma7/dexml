@@ -307,7 +307,10 @@ class Value(Field):
         return val
 
     def render_value(self,val):
-        return str(val)
+        if isinstance(val, basestring):
+            return val
+        else:
+            return str(val)
 
     def _esc_render_value(self,val):
         return escape(self.render_value(val))
